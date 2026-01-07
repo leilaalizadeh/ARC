@@ -26,6 +26,8 @@
 // Debugger  TARMP1.DLL		-pLPC1768
 // LandTiger TARMP1.DLL		-pLPC1768 -dLandTiger
 
+
+
 int main(){
 	//SystemInit();
 
@@ -34,8 +36,8 @@ int main(){
 		//DAC_write(500);
 	
 	//Timer
-		//init_timer_SRI(0,0xFF,0b000);			//stop reset interrupt
-		//enable_timer(0);
+		  init_timer_SRI(2,0xFFFF,0b010);			//stop reset interrupt
+		  enable_timer(2);
 		//uint32_t timer_value = read_timer(0);
 	
 	//Delay 
@@ -44,10 +46,10 @@ int main(){
 		//delay_ms(50);
 	
 	//Button
-		//BUTTON_init();
+		 BUTTON_init();
 	
 	//LED
-		//LED_init();
+		 LED_init();
 		//LED_On(0);
 	  //LED_Off(0);
 		//LED_Out(255);
