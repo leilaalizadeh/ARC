@@ -1,0 +1,126 @@
+ROW				RN 0
+COL				RN 1
+MAZE			RN 2
+ALL				RN 3
+CNT 			RN 4
+CURRENT			RN 5
+TMP				RN 6
+INDEX			RN 7
+TMP1			RN 8
+WHILECNT		RN 9
+FLAG			RN 10
+CNT1			RN 11
+
+				AREA MY_CODE,CODE,READONLY
+						
+mazeSolver		PROC
+				EXPORT mazeSolver
+				PUSH{R4-R8,R10-R11,LR}
+				
+				MUL ALL, ROW, COL
+				LDR WHILECNT,=0
+				LDR FLAG,=1
+WHILE 			
+				CMP FLAG,#1
+				BNE FINISH
+				ADD WHILECNT,#1
+				LDR FLAG,=0
+				LDR CNT,=0
+				LDR CNT1,=0
+FOR 
+				CMP ALL,CNT 
+				BEQ FOR1
+				
+				LDRB CURRENT,[MAZE,CNT] ;MAZE[0], MAZE[1], ...
+				
+				CMP CURRENT,#' '
+				BEQ TOP
+				
+				ADD CNT,#1
+				B FOR 
+			
+TOP
+				SUB INDEX, CNT, COL  
+				LDRB TMP, [MAZE,INDEX]
+				CMP TMP, #97              ;97-122 LOWERCASE 
+				BLO RIGHT
+				CMP TMP, #122
+				BHI RIGHT
+				
+				LDR TMP1,='N'
+				STRB TMP1,[MAZE,CNT]
+				LDR FLAG,=1
+				B RIGHT 
+RIGHT 
+				ADD INDEX, CNT, #1  
+				LDRB TMP, [MAZE,INDEX]
+				CMP TMP, #97              ;97-122 LOWERCASE
+				BLO BOTTOM
+				CMP TMP, #122
+				BHI BOTTOM
+				
+				LDR TMP1,='E'
+				STRB TMP1,[MAZE,CNT]
+				LDR FLAG,=1
+				B BOTTOM 
+BOTTOM 
+				ADD INDEX, CNT, COL  
+				LDRB TMP, [MAZE,INDEX]
+				CMP TMP, #97              ;97-122 LOWERCASE
+				BLO LEFT
+				CMP TMP, #122
+				BHI LEFT
+				
+				LDR TMP1,='S'
+				STRB TMP1,[MAZE,CNT]
+				LDR FLAG,=1
+				B LEFT 
+LEFT
+			
+				SUB INDEX, CNT, #1  
+				LDRB TMP, [MAZE,INDEX]
+				CMP TMP, #97              ;97-122 LOWERCASE
+				BLO NEXT
+				CMP TMP, #122
+				BHI NEXT
+				
+				LDR TMP1,='W'
+				STRB TMP1,[MAZE,CNT]
+				LDR FLAG,=1
+				B NEXT
+NEXT 				
+				ADD CNT,#1
+				B FOR 
+
+				LDR CNT1,=0
+FOR1
+				CMP ALL,CNT1
+				BEQ WHILE
+				
+				LDRB CURRENT, [MAZE,CNT1] 
+				ADD CNT1,#1
+				
+				CMP CURRENT,#'*'
+				BEQ FOR1
+				
+				CMP CURRENT,#' '
+				BEQ FOR1
+				
+				CMP CURRENT,#97
+				BLO NEXT1
+				
+				B FOR1
+				; 65 - 90 UPPERCASE         ;97-122 LOWERCASE
+					
+NEXT1				
+				SUB INDEX,CNT1,#1
+				ADD TMP, CURRENT, 32
+				STRB TMP,[MAZE,INDEX]
+				LDR FLAG,=1
+				B FOR1
+
+FINISH
+				MOV R0, WHILECNT
+				POP{R4-R8,R10-R11,LR}
+				ENDP
+				END
