@@ -1,0 +1,24 @@
+--cpu Cortex-M3
+".\objects\main.o"
+".\objects\irq_timer.o"
+".\objects\lib_timer.o"
+".\objects\irq_button.o"
+".\objects\lib_button.o"
+".\objects\funct_led.o"
+".\objects\lib_led.o"
+".\objects\lib_joystick.o"
+".\objects\irq_rit.o"
+".\objects\lib_rit.o"
+".\objects\irq_adc.o"
+".\objects\lib_adc.o"
+".\objects\asciilib.o"
+".\objects\glcd.o"
+".\objects\hzlib.o"
+".\objects\touchpanel.o"
+".\objects\my_code.o"
+".\objects\dac.o"
+".\objects\startup_lpc17xx.o"
+".\objects\system_lpc17xx.o"
+--ro-base 0x00000000 --entry 0x00000000 --rw-base 0x10000000 --entry Reset_Handler --first __Vectors --strict --summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\Template.map" -o .\Objects\Template.axf
