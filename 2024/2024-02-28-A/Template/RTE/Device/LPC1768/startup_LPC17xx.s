@@ -144,25 +144,25 @@ maze_filled		SPACE NUM_ROW * NUM_COL
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
 ;                IMPORT  SystemInit
-                IMPORT  __main
-;                LDR     R0, =SystemInit
-;                BLX     R0
-                LDR     R0, =__main
-                BX      R0
-;				IMPORT shortestPath
-;				LDR r0, =maze
-;				LDR r1, =maze_filled
-;				MOV r2, #NUM_ROW * NUM_COL
-;loopCopyData	LDRB r3, [r0], #1
-;				STRB r3, [r1], #1
-;				SUBS r2, r2, #1
-;				BNE loopCopyData				
-;				
-;				MOV r0, #NUM_ROW
-;				MOV r1, #NUM_COL
-;				LDR r2, =maze_filled
-;				BL shortestPath
-;stop			B stop
+;                IMPORT  __main
+;;                LDR     R0, =SystemInit
+;;                BLX     R0
+;                LDR     R0, =__main
+;                BX      R0
+				IMPORT shortestPath
+				LDR r0, =maze
+				LDR r1, =maze_filled
+				MOV r2, #NUM_ROW * NUM_COL
+loopCopyData	LDRB r3, [r0], #1
+				STRB r3, [r1], #1
+				SUBS r2, r2, #1
+				BNE loopCopyData				
+				
+				MOV r0, #NUM_ROW
+				MOV r1, #NUM_COL
+				LDR r2, =maze_filled
+				BL shortestPath
+stop			B stop
                 ENDP
 
 

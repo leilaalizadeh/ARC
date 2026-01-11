@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\Objects\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\Objects\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Dec 20 19:45:19 2025
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6180002: Last Updated: Sat Jan 10 14:04:15 2026
 <BR><P>
 <H3>Maximum Stack Usage =         68 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -78,7 +78,6 @@ Function Pointers
  <LI><a href="#[22]">USB_IRQHandler</a> from startup_lpc17xx.o(.text) referenced from startup_lpc17xx.o(RESET)
  <LI><a href="#[5]">UsageFault_Handler</a> from startup_lpc17xx.o(.text) referenced from startup_lpc17xx.o(RESET)
  <LI><a href="#[a]">WDT_IRQHandler</a> from startup_lpc17xx.o(.text) referenced from startup_lpc17xx.o(RESET)
- <LI><a href="#[2d]">__main</a> from __main.o(!!!main) referenced from startup_lpc17xx.o(.text)
 </UL>
 <P>
 <H3>
@@ -88,8 +87,7 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[2f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__scatterload
 <LI><a href="#[30]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry
 </UL>
-<BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(.text)
-</UL>
+
 <P><STRONG><a name="[2f]"></a>__scatterload</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __scatter.o(!!!scatter))
 <BR><BR>[Called By]<UL><LI><a href="#[2d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__main
 </UL>
@@ -206,7 +204,7 @@ Global Symbols
 
 <P><STRONG><a name="[6b]"></a>__rt_entry_postli_1</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, __rtentry2.o(.ARM.Collect$$rtentry$$0000000C))
 
-<P><STRONG><a name="[3f]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
+<P><STRONG><a name="[40]"></a>__rt_exit</STRONG> (Thumb, 0 bytes, Stack size unknown bytes, rtexit.o(.ARM.Collect$$rtexit$$00000000))
 <BR><BR>[Called By]<UL><LI><a href="#[39]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;exit
 </UL>
 
@@ -220,7 +218,9 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_sys_exit
 </UL>
 
-<P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, startup_lpc17xx.o(.text))
+<P><STRONG><a name="[0]"></a>Reset_Handler</STRONG> (Thumb, 36 bytes, Stack size 0 bytes, startup_lpc17xx.o(.text))
+<BR><BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortestPath
+</UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
 </UL>
 <P><STRONG><a name="[1]"></a>NMI_Handler</STRONG> (Thumb, 2 bytes, Stack size 0 bytes, startup_lpc17xx.o(.text))
@@ -382,7 +382,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = __user_setup_stackheap
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_perproc_libspace
+<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_perproc_libspace
 <LI><a href="#[2e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_initial_stackheap
 </UL>
 <BR>[Called By]<UL><LI><a href="#[33]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_sh
@@ -392,14 +392,14 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 8 + Unknown Stack Size
 <LI>Call Chain = exit
 </UL>
-<BR>[Calls]<UL><LI><a href="#[3f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit
+<BR>[Calls]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_exit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
 <P><STRONG><a name="[70]"></a>__user_libspace</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, libspace.o(.text), UNUSED)
 
-<P><STRONG><a name="[3e]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
+<P><STRONG><a name="[3f]"></a>__user_perproc_libspace</STRONG> (Thumb, 0 bytes, Stack size 0 bytes, libspace.o(.text))
 <BR><BR>[Called By]<UL><LI><a href="#[34]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__user_setup_stackheap
 </UL>
 
@@ -427,30 +427,24 @@ Global Symbols
 <P><STRONG><a name="[1e]"></a>EINT2_IRQHandler</STRONG> (Thumb, 18 bytes, Stack size 0 bytes, irq_button.o(.text.EINT2_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
 </UL>
-<P><STRONG><a name="[42]"></a>LED_Off</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, funct_led.o(.text.LED_Off))
+<P><STRONG><a name="[43]"></a>LED_Off</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, funct_led.o(.text.LED_Off))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = LED_Off
 </UL>
-<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Out
+<BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Out
 </UL>
 
-<P><STRONG><a name="[41]"></a>LED_On</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, funct_led.o(.text.LED_On))
+<P><STRONG><a name="[42]"></a>LED_On</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, funct_led.o(.text.LED_On))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = LED_On
 </UL>
-<BR>[Called By]<UL><LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Out
+<BR>[Called By]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Out
 <LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0_IRQHandler
 </UL>
 
-<P><STRONG><a name="[c]"></a>TIMER1_IRQHandler</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, irq_timer.o(.text.TIMER1_IRQHandler))
-<BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
-</UL>
-<P><STRONG><a name="[d]"></a>TIMER2_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, irq_timer.o(.text.TIMER2_IRQHandler))
-<BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
-</UL>
-<P><STRONG><a name="[40]"></a>LED_Out</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, funct_led.o(.text.LED_Out))
+<P><STRONG><a name="[41]"></a>LED_Out</STRONG> (Thumb, 74 bytes, Stack size 16 bytes, funct_led.o(.text.LED_Out))
 <BR><BR>[Stack]<UL><LI>Max Depth = 20<LI>Call Chain = LED_Out &rArr; LED_Off
 </UL>
-<BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Off
-<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_On
+<BR>[Calls]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Off
+<LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_On
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIMER0_IRQHandler
 </UL>
@@ -462,16 +456,22 @@ Global Symbols
 <P><STRONG><a name="[27]"></a>RIT_IRQHandler</STRONG> (Thumb, 116 bytes, Stack size 0 bytes, irq_rit.o(.text.RIT_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
 </UL>
-<P><STRONG><a name="[45]"></a>SystemInit</STRONG> (Thumb, 388 bytes, Stack size 0 bytes, system_lpc17xx.o(.text.SystemInit))
+<P><STRONG><a name="[46]"></a>SystemInit</STRONG> (Thumb, 388 bytes, Stack size 0 bytes, system_lpc17xx.o(.text.SystemInit))
 <BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
 <P><STRONG><a name="[b]"></a>TIMER0_IRQHandler</STRONG> (Thumb, 372 bytes, Stack size 8 bytes, irq_timer.o(.text.TIMER0_IRQHandler))
 <BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = TIMER0_IRQHandler &rArr; LED_Out &rArr; LED_Off
 </UL>
-<BR>[Calls]<UL><LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_On
-<LI><a href="#[40]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Out
+<BR>[Calls]<UL><LI><a href="#[42]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_On
+<LI><a href="#[41]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_Out
 </UL>
+<BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
+</UL>
+<P><STRONG><a name="[c]"></a>TIMER1_IRQHandler</STRONG> (Thumb, 14 bytes, Stack size 0 bytes, irq_timer.o(.text.TIMER1_IRQHandler))
+<BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
+</UL>
+<P><STRONG><a name="[d]"></a>TIMER2_IRQHandler</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, irq_timer.o(.text.TIMER2_IRQHandler))
 <BR>[Address Reference Count : 1]<UL><LI> startup_lpc17xx.o(RESET)
 </UL>
 <P><STRONG><a name="[e]"></a>TIMER3_IRQHandler</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, irq_timer.o(.text.TIMER3_IRQHandler))
@@ -483,10 +483,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[43]"></a>init_timer_SRI</STRONG> (Thumb, 210 bytes, Stack size 32 bytes, lib_timer.o(.text.init_timer_SRI))
+<P><STRONG><a name="[44]"></a>init_timer_SRI</STRONG> (Thumb, 210 bytes, Stack size 32 bytes, lib_timer.o(.text.init_timer_SRI))
 <BR><BR>[Stack]<UL><LI>Max Depth = 36<LI>Call Chain = init_timer_SRI &rArr; __NVIC_EnableIRQ
 </UL>
-<BR>[Calls]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
+<BR>[Calls]<UL><LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__NVIC_EnableIRQ
 </UL>
 <BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
@@ -496,24 +496,25 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[48]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LED_init
 <LI><a href="#[47]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;enable_timer
-<LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_timer_SRI
-<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortestPath
-<LI><a href="#[45]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
+<LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_timer_SRI
+<LI><a href="#[3e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;shortestPath
+<LI><a href="#[46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SystemInit
 </UL>
 <BR>[Called By]<UL><LI><a href="#[37]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[46]"></a>shortestPath</STRONG> (Thumb, 188 bytes, Stack size 0 bytes, chat_code.o(MY_CODE))
-<BR><BR>[Called By]<UL><LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[3e]"></a>shortestPath</STRONG> (Thumb, 188 bytes, Stack size 0 bytes, my_code.o(MY_CODE))
+<BR><BR>[Called By]<UL><LI><a href="#[0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Reset_Handler
+<LI><a href="#[38]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <P>
 <H3>
 Local Symbols
 </H3>
-<P><STRONG><a name="[44]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, lib_timer.o(.text.__NVIC_EnableIRQ))
+<P><STRONG><a name="[45]"></a>__NVIC_EnableIRQ</STRONG> (Thumb, 48 bytes, Stack size 4 bytes, lib_timer.o(.text.__NVIC_EnableIRQ))
 <BR><BR>[Stack]<UL><LI>Max Depth = 4<LI>Call Chain = __NVIC_EnableIRQ
 </UL>
-<BR>[Called By]<UL><LI><a href="#[43]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_timer_SRI
+<BR>[Called By]<UL><LI><a href="#[44]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;init_timer_SRI
 </UL>
 <P>
 <H3>

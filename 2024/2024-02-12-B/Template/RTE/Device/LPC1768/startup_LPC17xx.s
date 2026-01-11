@@ -144,25 +144,25 @@ cells_visited	SPACE 200
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-                IMPORT  __main
-                LDR     R0, =__main
-                BX      R0
-;				IMPORT exploreMaze
-;					
-;				LDR r0, =maze
-;				LDR r1, =maze_visited
-;				MOV r2, #NUM_ROW * NUM_COL
-;loopCopyData	LDRB r3, [r0], #1
-;				STRB r3, [r1], #1
-;				SUBS r2, r2, #1
-;				BNE loopCopyData				
-;				
-;				MOV r0, #NUM_ROW
-;				MOV r1, #NUM_COL
-;				LDR r2, =maze_visited
-;				LDR r3, =cells_visited
-;				BL exploreMaze
-;stop			B stop
+;                IMPORT  __main
+;                LDR     R0, =__main
+;                BX      R0
+				IMPORT exploreMaze
+					
+				LDR r0, =maze
+				LDR r1, =maze_visited
+				MOV r2, #NUM_ROW * NUM_COL
+loopCopyData	LDRB r3, [r0], #1
+				STRB r3, [r1], #1
+				SUBS r2, r2, #1
+				BNE loopCopyData				
+				
+				MOV r0, #NUM_ROW
+				MOV r1, #NUM_COL
+				LDR r2, =maze_visited
+				LDR r3, =cells_visited
+				BL exploreMaze
+stop			B stop
 
 
 				;SYSTICK

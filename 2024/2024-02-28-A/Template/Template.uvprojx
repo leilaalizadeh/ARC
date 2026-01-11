@@ -565,19 +565,9 @@
           <GroupName>Assembly</GroupName>
           <Files>
             <File>
-              <FileName>MY_CODES.s</FileName>
+              <FileName>MY_CODE.s</FileName>
               <FileType>2</FileType>
-              <FilePath>.\MY_CODES.s</FilePath>
-            </File>
-            <File>
-              <FileName>CHAT_CODE.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\CHAT_CODE.s</FilePath>
-            </File>
-            <File>
-              <FileName>CHAT.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\CHAT.s</FilePath>
+              <FilePath>.\MY_CODE.s</FilePath>
             </File>
           </Files>
         </Group>
