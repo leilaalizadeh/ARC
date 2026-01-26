@@ -22,29 +22,29 @@ FOR
 							CMP CNT,#8
 							BEQ FINISH
 							
-							LDRB CURRENT, [MATRIX,CNT]
-							AND	 VAL,CURRENT,B_MATRIX  ;STEP 1: Ai AND B
+							LDRB CURRENT, [MATRIX,CNT] ; A = 0xF8, 0x7C, 0x3E, 0x1F, 0x8F, 0xC7, 0xE3, 0xF1
+							AND	 VAL,CURRENT,B_MATRIX  ; STEP 1: 0xF8 AND 0xAA   A0 AND B
 							
 							;STEP2
 							LDR CNT1,=1
-							AND VAL2,VAL,#1
-							
+							AND VAL2,VAL,#1	; BIT0
 FOR1
 							CMP CNT1,#8
 							BEQ NEXT2 
 							
 							LDR MASK,=1          ; 0000 0001
-							LSL MASK,CNT1        ; 0000 0100
-							AND VAL1,VAL,MASK    ; VALUE BIT2 
+							LSL MASK,CNT1        ; 0000 0010
+							AND VAL1,VAL,MASK    ; VALUE BIT1 
 							LSR VAL1,CNT1        ; 0000 0001
-							EOR	VAL2,VAL1
+							EOR	VAL2,VAL1        ; V = BIT0 XOR BIT1 ,  V = V XOR BIT2, V = V XOR BIT3, ...
 							ADD CNT1,#1
 							B FOR1 
 							
 NEXT2						
+							;STEP3
                             LDR MASK,=7           
-							SUB MASK,MASK,CNT     ; 7 - 0, 7-1, 7-2,...
-							LSR VAL,C_MATRIX,MASK ; BIT0
+							SUB MASK,MASK,CNT     ; 7-0, 7-1, 7-2,...
+							LSR VAL,C_MATRIX,MASK ; BIT0 C_MATRIX
 							AND VAL,#1
 							EOR VAL2,VAL,VAL2     ; 0000 0001
 							

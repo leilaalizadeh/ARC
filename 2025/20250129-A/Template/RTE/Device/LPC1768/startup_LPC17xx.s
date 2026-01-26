@@ -127,16 +127,16 @@ CRP_Key         DCD     0xFFFFFFFF
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-;                IMPORT  __main
-;                LDR     R0, =__main
-;                BX      R0
+                IMPORT  __main
+                LDR     R0, =__main
+                BX      R0
 				
 				
-				IMPORT bitwiseAffineTransformation 
-				LDR R0,=transformationMatrix
-				LDR R1,=0xAA
-				LDR R2,=0x63
-				BL bitwiseAffineTransformation
+;				IMPORT bitwiseAffineTransformation 
+;				LDR R0,=transformationMatrix
+;				LDR R1,=0xAA
+;				LDR R2,=0x63
+;				BL bitwiseAffineTransformation
 				
 				;SYSTICK
 ;				LDR r0, =SYScontrolAndStatusReg

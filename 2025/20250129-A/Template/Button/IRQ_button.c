@@ -32,6 +32,7 @@ void EINT0_IRQHandler (void)
 //	last_tick0 = tick;
 //	state0=1;
 ////  write code from here with or without debouncing
+	
 	uint32_t current = read_timer(1);
 	uint32_t lsb = current & 0xFF;
 	uint32_t msb = current >> 8; //SHIFT RIGHT

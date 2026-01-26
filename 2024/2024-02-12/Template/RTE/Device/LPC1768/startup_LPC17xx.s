@@ -143,23 +143,23 @@ maze_directions	SPACE NUM_ROW * NUM_COL
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-                IMPORT  __main
-                LDR     R0, =__main
-                BX      R0
+;                IMPORT  __main
+;                LDR     R0, =__main
+;                BX      R0
 
-;                IMPORT  mazeSolver
-;				LDR r0, =maze
-;				LDR r1, =maze_directions
-;				MOV r2, #NUM_ROW * NUM_COL
-;loopCopyData	LDRB r3, [r0], #1
-;				STRB r3, [r1], #1
-;				SUBS r2, r2, #1
-;				BNE loopCopyData				
-;				
-;				MOV r0, #NUM_ROW
-;				MOV r1, #NUM_COL
-;				LDR r2, =maze_directions
-;				BL mazeSolver
+                IMPORT  mazeSolver
+				LDR r0, =maze
+				LDR r1, =maze_directions
+				MOV r2, #NUM_ROW * NUM_COL
+loopCopyData	LDRB r3, [r0], #1
+				STRB r3, [r1], #1
+				SUBS r2, r2, #1
+				BNE loopCopyData				
+				
+				MOV r0, #NUM_ROW
+				MOV r1, #NUM_COL
+				LDR r2, =maze_directions
+				BL mazeSolver
 
 stop			B stop
 

@@ -10,11 +10,14 @@
 #include "LPC17xx.h"
 #include "../Main.h"
 extern uint32_t tick;
-extern uint8_t result; 
+
+extern uint8_t result;
+
 int led = 0;
+
 void TIMER0_IRQHandler (void)
 {
-//	250ms baad miad inja resid check mikone age led =0 bud roshan mikone age led=1 bud xamush mikone mire 250 ms baad dobare miyad
+  //0.25S   25 * 10^-3 * 25 * 10^8 =625000
 	if (led == 0){
 		LED_Out(result);
 		led =1;
