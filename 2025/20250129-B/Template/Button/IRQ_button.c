@@ -67,7 +67,7 @@ void EINT1_IRQHandler (void)
 	if(count == 8){
 		bitMatrixMultiplication(matrix_a,matrix_b,matrix_c);
 	}
-	init_timer_SRI(0,125000,0b011);			//stop reset interrupt
+	init_timer_SRI(0,1250000,0b011);	 //		5 * 10^-3 * 25 * 10 ^ 8
 	enable_timer(0);
 	LPC_SC->EXTINT &= (1 << 1);     /* clear pending interrupt         */
 }

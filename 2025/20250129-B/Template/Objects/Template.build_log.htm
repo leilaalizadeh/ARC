@@ -21,13 +21,15 @@ Target DLL:      UL2CM3.DLL V1.164.7.0
 Dialog DLL:      TCM.DLL V1.56.1.0
  
 <h2>Project:</h2>
-D:\Uni\architecture\2025\20250129-B\Template\Template.uvprojx
+D:\Uni\architecture\git\ARC\2025\20250129-B\Template\Template.uvprojx
 Project File Date:  01/04/2026
 
 <h2>Output:</h2>
 *** Using Compiler 'V6.18', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target_1'
-Timer/IRQ_timer.c(10): warning: In file included from...
+assembling startup_LPC17xx.s...
+Button/IRQ_button.c(1): warning: In file included from...
+Button/../Main.h(1): warning: In file included from...
 C:/Users/aliza/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.7.2/Device/Include\LPC17xx.h(200): warning: anonymous structs are a C11 extension [-Wc11-extensions]
     struct {
     ^
@@ -100,32 +102,60 @@ C:/Users/aliza/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.7.2/Device/Include\LPC
 C:/Users/aliza/AppData/Local/Arm/Packs/Keil/LPC1700_DFP/2.7.2/Device/Include\LPC17xx.h(847): warning: anonymous unions are a C11 extension [-Wc11-extensions]
   union {
   ^
-Timer/IRQ_timer.c(11): warning: In file included from...
-Timer/../Main.h(10): warning: In file included from...
-Timer/../DAC/DAC.h(3): warning: no newline at end of file [-Wnewline-eof]
+Button/IRQ_button.c(1): warning: In file included from...
+Button/../Main.h(10): warning: In file included from...
+Button/../DAC/DAC.h(3): warning: no newline at end of file [-Wnewline-eof]
 void DAC_write(uint16_t value);
                                ^
-Timer/IRQ_timer.c(11): warning: In file included from...
-Timer/../Main.h(11): warning: no newline at end of file [-Wnewline-eof]
+Button/IRQ_button.c(1): warning: In file included from...
+Button/../Main.h(11): warning: no newline at end of file [-Wnewline-eof]
 #include <stdio.h>
                   ^
-Timer/IRQ_timer.c(14): warning: no previous extern declaration for non-static variable 'led' [-Wmissing-variable-declarations]
-int led = 0;
+Button/IRQ_button.c(19): warning: no previous extern declaration for non-static variable 'count' [-Wmissing-variable-declarations]
+int count = 0;
     ^
-Timer/IRQ_timer.c(14): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int led = 0;
+Button/IRQ_button.c(19): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+int count = 0;
 ^
-Timer/IRQ_timer.c(15): warning: no previous extern declaration for non-static variable 'count1' [-Wmissing-variable-declarations]
-int count1 = 0;
-    ^
-Timer/IRQ_timer.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-int count1 = 0;
+Button/IRQ_button.c(44): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'unsigned char' [-Wimplicit-int-conversion]
+                matrix_a[count] = lsb;
+                                ~ ^~~
+Button/IRQ_button.c(45): warning: implicit conversion loses integer precision: 'uint32_t' (aka 'unsigned int') to 'unsigned char' [-Wimplicit-int-conversion]
+                matrix_b[count] = msb;
+                                ~ ^~~
+Button/IRQ_button.c(23): warning: no previous prototype for function 'EINT0_IRQHandler' [-Wmissing-prototypes]
+void EINT0_IRQHandler (void)      
+     ^
+Button/IRQ_button.c(23): note: declare 'static' if the function is not intended to be used outside of this translation unit
+void EINT0_IRQHandler (void)      
 ^
-28 warnings generated.
-compiling IRQ_timer.c...
+static 
+Button/IRQ_button.c(70): warning: binary integer literals are a GNU extension [-Wgnu-binary-literal]
+        init_timer_SRI(0,1250000,0b011);         //             5 * 10^-3 * 25 * 10 ^ 8
+                                 ^
+Button/IRQ_button.c(15): warning: no previous extern declaration for non-static variable 'matrix_a' [-Wmissing-variable-declarations]
+unsigned char matrix_a[8];
+              ^
+Button/IRQ_button.c(15): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned char matrix_a[8];
+^
+Button/IRQ_button.c(16): warning: no previous extern declaration for non-static variable 'matrix_b' [-Wmissing-variable-declarations]
+unsigned char matrix_b[8];
+              ^
+Button/IRQ_button.c(16): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned char matrix_b[8];
+^
+Button/IRQ_button.c(17): warning: no previous extern declaration for non-static variable 'matrix_c' [-Wmissing-variable-declarations]
+unsigned char matrix_c[8];      
+              ^
+Button/IRQ_button.c(17): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+unsigned char matrix_c[8];      
+^
+34 warnings generated.
+compiling IRQ_button.c...
 linking...
 Program Size: Code=2328 RO-data=252 RW-data=0 ZI-data=1168  
-".\Objects\Template.axf" - 0 Error(s), 28 Warning(s).
+".\Objects\Template.axf" - 0 Error(s), 34 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -152,10 +182,10 @@ Package Vendor: Keil
    * Component: ARM::CMSIS:CORE:6.1.0
 
    * Component: Keil::Device:Startup:1.0.0
-      Include file:  RTE_Driver/Config/RTE_Device.h
       Include file:  Device/Include/LPC17xx.h
       Source file:   Device/Source/ARM/startup_LPC17xx.s
       Source file:   Device/Source/system_LPC17xx.c
+      Include file:  RTE_Driver/Config/RTE_Device.h
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
