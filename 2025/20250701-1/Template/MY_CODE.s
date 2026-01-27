@@ -1,4 +1,4 @@
-SEED		RN 0
+SEED		RN 0  ; prev value
 A			RN 1
 C			RN 2
 N			RN 3
