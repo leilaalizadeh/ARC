@@ -13,8 +13,7 @@ extern uint32_t tick;
 
 extern int flag;
 extern int var;
-int so = 0;
-
+int index = 0;
 
  uint16_t SinTable[45] =                                       
  {
@@ -27,26 +26,26 @@ int so = 0;
 
 void TIMER0_IRQHandler (void)
 {
-	if (so == 0){
-		if(flag == 1){
-			flag = 0;
-			DAC_write(SinTable);
-		}
-		so = 1;
-	}
-	else{
-			so = 0;
-			LED_Out(0);
-			flag = 0;
-		  var = 0;
-			disable_timer(0);
-	}
+  disable_timer(1);
+	reset_timer(1);
+	index = 0;
+	disable_timer(0);
+	reset_timer(0);
+	
+	var = 0;
+	flag = 0;
+	LED_Out(0);
   LPC_TIM0->IR |= 1;			/* clear interrupt flag */
   return;
 }
 
 void TIMER1_IRQHandler (void)
 {
+	DAC_write(SinTable[index]);
+	index++;
+	if(index == 45)   //9*5
+		index =0 ;
+		
   LPC_TIM1->IR = 1;			/* clear interrupt flag */
   return;
 }

@@ -26,7 +26,7 @@ int flag = 0;
 
 void RIT_IRQHandler (void)
 {			
-		if((LPC_GPIO1->FIOPIN & (1<<25)) == 0){			//sel
+		if((LPC_GPIO1->FIOPIN & (1<<25)) == 0){			//sel 
 			int result = aliquotSum(var);
 			if(result == 0)
 				LED_On(11-11);
@@ -51,8 +51,12 @@ void RIT_IRQHandler (void)
 				LED_Out(0);
 			flag = 1;
 			reset_timer(0);
-			init_timer_SRI(0,5000000,0b011);
+			init_timer_SRI(0,0xFFFFFFF,0b011); //1s * 25000000 - <2S
 			enable_timer(0);
+			
+			reset_timer(1);
+			init_timer_SRI(1,315,0b011); //1s * 25000000
+			enable_timer(1);
 		}
 		if((LPC_GPIO1->FIOPIN & (1<<27)) == 0){			//left
 			

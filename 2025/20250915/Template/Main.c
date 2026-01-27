@@ -38,9 +38,9 @@ int main(){
 //		 enable_timer(0);
 		//uint32_t timer_value = read_timer(0);
 	
-	//Delay 
-		//init_timer_SRI(3,25000,0b011);			//1ms delay
-		//enable_timer(3);
+	//Delay debouncing
+		init_timer_SRI(3,25000,0b011);			//1ms delay
+		enable_timer(3);
 		//delay_ms(50);
 	
 	//Button

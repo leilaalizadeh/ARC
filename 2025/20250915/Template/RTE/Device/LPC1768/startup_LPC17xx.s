@@ -133,8 +133,10 @@ Reset_Handler   PROC
                 BX      R0
 
 ;				IMPORT aliquotSum
-;;				LDR R0,=28
-;;				LDR R0,=102
+;				LDR R0,=28
+;				BL aliquotSum
+;				LDR R0,=102
+;				BL aliquotSum
 ;				LDR R0,=158
 ;				BL aliquotSum
 				
