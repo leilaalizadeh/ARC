@@ -23,6 +23,8 @@ Section Cross References
     lib_timer.o(.ARM.exidx.text.__NVIC_EnableIRQ) refers to lib_timer.o(.text.__NVIC_EnableIRQ) for [Anonymous Symbol]
     lib_timer.o(.text.delay_ms) refers to lib_timer.o(.bss.tick) for tick
     lib_timer.o(.ARM.exidx.text.delay_ms) refers to lib_timer.o(.text.delay_ms) for [Anonymous Symbol]
+    irq_button.o(.text.EINT0_IRQHandler) refers to irq_button.o(.bss.count) for count
+    irq_button.o(.text.EINT0_IRQHandler) refers to irq_button.o(.bss.count1) for count1
     irq_button.o(.text.EINT0_IRQHandler) refers to irq_button.o(.bss.A) for A
     irq_button.o(.text.EINT0_IRQHandler) refers to irq_button.o(.bss.B) for B
     irq_button.o(.text.EINT0_IRQHandler) refers to irq_button.o(.bss.C) for C
@@ -660,23 +662,23 @@ Image Symbol Table
     [Anonymous Symbol]                       0x000002f0   Section        0  irq_timer.o(.text.TIMER2_IRQHandler)
     .ARM.__at_0x02FC                         0x000002fc   Section        4  startup_lpc17xx.o(.ARM.__at_0x02FC)
     [Anonymous Symbol]                       0x00000300   Section        0  irq_button.o(.text.EINT0_IRQHandler)
-    [Anonymous Symbol]                       0x000003c0   Section        0  irq_button.o(.text.EINT2_IRQHandler)
-    [Anonymous Symbol]                       0x00000410   Section        0  funct_led.o(.text.LED_Off)
-    [Anonymous Symbol]                       0x00000440   Section        0  funct_led.o(.text.LED_On)
-    [Anonymous Symbol]                       0x00000470   Section        0  funct_led.o(.text.LED_Out)
-    [Anonymous Symbol]                       0x000004bc   Section        0  lib_led.o(.text.LED_init)
-    [Anonymous Symbol]                       0x000004f8   Section        0  irq_rit.o(.text.RIT_IRQHandler)
-    [Anonymous Symbol]                       0x0000056c   Section        0  irq_timer.o(.text.TIMER1_IRQHandler)
-    [Anonymous Symbol]                       0x0000057c   Section        0  irq_timer.o(.text.TIMER3_IRQHandler)
-    __NVIC_EnableIRQ                         0x00000599   Thumb Code    48  lib_timer.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x00000598   Section        0  lib_timer.o(.text.__NVIC_EnableIRQ)
-    __NVIC_EnableIRQ                         0x000005c9   Thumb Code    48  lib_button.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x000005c8   Section        0  lib_button.o(.text.__NVIC_EnableIRQ)
-    [Anonymous Symbol]                       0x000005f8   Section        0  lib_timer.o(.text.enable_timer)
-    [Anonymous Symbol]                       0x00000664   Section        0  lib_timer.o(.text.init_timer_SRI)
-    [Anonymous Symbol]                       0x00000738   Section        0  main.o(.text.main)
-    [Anonymous Symbol]                       0x00000760   Section        0  lib_timer.o(.text.read_timer)
-    MY_CODE                                  0x000007d4   Section       80  my_code.o(MY_CODE)
+    [Anonymous Symbol]                       0x000003e4   Section        0  irq_button.o(.text.EINT2_IRQHandler)
+    [Anonymous Symbol]                       0x00000434   Section        0  funct_led.o(.text.LED_Off)
+    [Anonymous Symbol]                       0x00000464   Section        0  funct_led.o(.text.LED_On)
+    [Anonymous Symbol]                       0x00000494   Section        0  funct_led.o(.text.LED_Out)
+    [Anonymous Symbol]                       0x000004e0   Section        0  lib_led.o(.text.LED_init)
+    [Anonymous Symbol]                       0x0000051c   Section        0  irq_rit.o(.text.RIT_IRQHandler)
+    [Anonymous Symbol]                       0x00000590   Section        0  irq_timer.o(.text.TIMER1_IRQHandler)
+    [Anonymous Symbol]                       0x000005a0   Section        0  irq_timer.o(.text.TIMER3_IRQHandler)
+    __NVIC_EnableIRQ                         0x000005bd   Thumb Code    48  lib_timer.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x000005bc   Section        0  lib_timer.o(.text.__NVIC_EnableIRQ)
+    __NVIC_EnableIRQ                         0x000005ed   Thumb Code    48  lib_button.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x000005ec   Section        0  lib_button.o(.text.__NVIC_EnableIRQ)
+    [Anonymous Symbol]                       0x0000061c   Section        0  lib_timer.o(.text.enable_timer)
+    [Anonymous Symbol]                       0x00000688   Section        0  lib_timer.o(.text.init_timer_SRI)
+    [Anonymous Symbol]                       0x0000075c   Section        0  main.o(.text.main)
+    [Anonymous Symbol]                       0x00000784   Section        0  lib_timer.o(.text.read_timer)
+    MY_CODE                                  0x000007f8   Section       78  my_code.o(MY_CODE)
     .bss                                     0x10000000   Section       96  libspace.o(.bss)
     Heap_Mem                                 0x10000098   Data           0  startup_lpc17xx.o(HEAP)
     Stack_Mem                                0x10000098   Data        1024  startup_lpc17xx.o(STACK)
@@ -822,23 +824,23 @@ Image Symbol Table
     EINT1_IRQHandler                         0x00000291   Thumb Code    78  irq_button.o(.text.EINT1_IRQHandler)
     TIMER0_IRQHandler                        0x000002e1   Thumb Code    14  irq_timer.o(.text.TIMER0_IRQHandler)
     TIMER2_IRQHandler                        0x000002f1   Thumb Code    12  irq_timer.o(.text.TIMER2_IRQHandler)
-    EINT0_IRQHandler                         0x00000301   Thumb Code   192  irq_button.o(.text.EINT0_IRQHandler)
-    EINT2_IRQHandler                         0x000003c1   Thumb Code    78  irq_button.o(.text.EINT2_IRQHandler)
-    LED_Off                                  0x00000411   Thumb Code    48  funct_led.o(.text.LED_Off)
-    LED_On                                   0x00000441   Thumb Code    48  funct_led.o(.text.LED_On)
-    LED_Out                                  0x00000471   Thumb Code    74  funct_led.o(.text.LED_Out)
-    LED_init                                 0x000004bd   Thumb Code    60  lib_led.o(.text.LED_init)
-    RIT_IRQHandler                           0x000004f9   Thumb Code   116  irq_rit.o(.text.RIT_IRQHandler)
-    TIMER1_IRQHandler                        0x0000056d   Thumb Code    14  irq_timer.o(.text.TIMER1_IRQHandler)
-    TIMER3_IRQHandler                        0x0000057d   Thumb Code    28  irq_timer.o(.text.TIMER3_IRQHandler)
-    enable_timer                             0x000005f9   Thumb Code   108  lib_timer.o(.text.enable_timer)
-    init_timer_SRI                           0x00000665   Thumb Code   210  lib_timer.o(.text.init_timer_SRI)
-    main                                     0x00000739   Thumb Code    40  main.o(.text.main)
-    read_timer                               0x00000761   Thumb Code   116  lib_timer.o(.text.read_timer)
-    transposition                            0x000007d5   Thumb Code    80  my_code.o(MY_CODE)
-    led_mask                                 0x00000824   Data          32  funct_led.o(.rodata.led_mask)
-    Region$$Table$$Base                      0x00000844   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00000854   Number         0  anon$$obj.o(Region$$Table)
+    EINT0_IRQHandler                         0x00000301   Thumb Code   226  irq_button.o(.text.EINT0_IRQHandler)
+    EINT2_IRQHandler                         0x000003e5   Thumb Code    78  irq_button.o(.text.EINT2_IRQHandler)
+    LED_Off                                  0x00000435   Thumb Code    48  funct_led.o(.text.LED_Off)
+    LED_On                                   0x00000465   Thumb Code    48  funct_led.o(.text.LED_On)
+    LED_Out                                  0x00000495   Thumb Code    74  funct_led.o(.text.LED_Out)
+    LED_init                                 0x000004e1   Thumb Code    60  lib_led.o(.text.LED_init)
+    RIT_IRQHandler                           0x0000051d   Thumb Code   116  irq_rit.o(.text.RIT_IRQHandler)
+    TIMER1_IRQHandler                        0x00000591   Thumb Code    14  irq_timer.o(.text.TIMER1_IRQHandler)
+    TIMER3_IRQHandler                        0x000005a1   Thumb Code    28  irq_timer.o(.text.TIMER3_IRQHandler)
+    enable_timer                             0x0000061d   Thumb Code   108  lib_timer.o(.text.enable_timer)
+    init_timer_SRI                           0x00000689   Thumb Code   210  lib_timer.o(.text.init_timer_SRI)
+    main                                     0x0000075d   Thumb Code    40  main.o(.text.main)
+    read_timer                               0x00000785   Thumb Code   116  lib_timer.o(.text.read_timer)
+    transposition                            0x000007f9   Thumb Code    78  my_code.o(MY_CODE)
+    led_mask                                 0x00000848   Data          32  funct_led.o(.rodata.led_mask)
+    Region$$Table$$Base                      0x00000868   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00000878   Number         0  anon$$obj.o(Region$$Table)
     __libspace_start                         0x10000000   Data          96  libspace.o(.bss)
     A                                        0x10000060   Data           8  irq_button.o(.bss.A)
     __temporary_stack_top$libspace           0x10000060   Data           0  libspace.o(.bss)
@@ -859,9 +861,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000014d
 
-  Load Region LR_1 (Base: 0x00000000, Size: 0x00000854, Max: 0xffffffff, ABSOLUTE)
+  Load Region LR_1 (Base: 0x00000000, Size: 0x00000878, Max: 0xffffffff, ABSOLUTE)
 
-    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000854, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RO (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00000878, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -932,52 +934,54 @@ Memory Map of the image
     0x000002ee   0x000002ee   0x00000002   PAD
     0x000002f0   0x000002f0   0x0000000c   Code   RO           15    .text.TIMER2_IRQHandler  irq_timer.o
     0x000002fc   0x000002fc   0x00000004   Code   RO          279    .ARM.__at_0x02FC    startup_lpc17xx.o
-    0x00000300   0x00000300   0x000000c0   Code   RO           48    .text.EINT0_IRQHandler  irq_button.o
-    0x000003c0   0x000003c0   0x0000004e   Code   RO           52    .text.EINT2_IRQHandler  irq_button.o
-    0x0000040e   0x0000040e   0x00000002   PAD
-    0x00000410   0x00000410   0x00000030   Code   RO           86    .text.LED_Off       funct_led.o
-    0x00000440   0x00000440   0x00000030   Code   RO           84    .text.LED_On        funct_led.o
-    0x00000470   0x00000470   0x0000004a   Code   RO           88    .text.LED_Out       funct_led.o
-    0x000004ba   0x000004ba   0x00000002   PAD
-    0x000004bc   0x000004bc   0x0000003c   Code   RO           98    .text.LED_init      lib_led.o
-    0x000004f8   0x000004f8   0x00000074   Code   RO          118    .text.RIT_IRQHandler  irq_rit.o
-    0x0000056c   0x0000056c   0x0000000e   Code   RO           13    .text.TIMER1_IRQHandler  irq_timer.o
-    0x0000057a   0x0000057a   0x00000002   PAD
-    0x0000057c   0x0000057c   0x0000001c   Code   RO           17    .text.TIMER3_IRQHandler  irq_timer.o
-    0x00000598   0x00000598   0x00000030   Code   RO           36    .text.__NVIC_EnableIRQ  lib_timer.o
-    0x000005c8   0x000005c8   0x00000030   Code   RO           75    .text.__NVIC_EnableIRQ  lib_button.o
-    0x000005f8   0x000005f8   0x0000006c   Code   RO           26    .text.enable_timer  lib_timer.o
-    0x00000664   0x00000664   0x000000d2   Code   RO           34    .text.init_timer_SRI  lib_timer.o
-    0x00000736   0x00000736   0x00000002   PAD
-    0x00000738   0x00000738   0x00000028   Code   RO            2    .text.main          main.o
-    0x00000760   0x00000760   0x00000074   Code   RO           28    .text.read_timer    lib_timer.o
-    0x000007d4   0x000007d4   0x00000050   Code   RO          259    MY_CODE             my_code.o
-    0x00000824   0x00000824   0x00000020   Data   RO           90    .rodata.led_mask    funct_led.o
-    0x00000844   0x00000844   0x00000010   Data   RO          522    Region$$Table       anon$$obj.o
+    0x00000300   0x00000300   0x000000e2   Code   RO           48    .text.EINT0_IRQHandler  irq_button.o
+    0x000003e2   0x000003e2   0x00000002   PAD
+    0x000003e4   0x000003e4   0x0000004e   Code   RO           52    .text.EINT2_IRQHandler  irq_button.o
+    0x00000432   0x00000432   0x00000002   PAD
+    0x00000434   0x00000434   0x00000030   Code   RO           86    .text.LED_Off       funct_led.o
+    0x00000464   0x00000464   0x00000030   Code   RO           84    .text.LED_On        funct_led.o
+    0x00000494   0x00000494   0x0000004a   Code   RO           88    .text.LED_Out       funct_led.o
+    0x000004de   0x000004de   0x00000002   PAD
+    0x000004e0   0x000004e0   0x0000003c   Code   RO           98    .text.LED_init      lib_led.o
+    0x0000051c   0x0000051c   0x00000074   Code   RO          118    .text.RIT_IRQHandler  irq_rit.o
+    0x00000590   0x00000590   0x0000000e   Code   RO           13    .text.TIMER1_IRQHandler  irq_timer.o
+    0x0000059e   0x0000059e   0x00000002   PAD
+    0x000005a0   0x000005a0   0x0000001c   Code   RO           17    .text.TIMER3_IRQHandler  irq_timer.o
+    0x000005bc   0x000005bc   0x00000030   Code   RO           36    .text.__NVIC_EnableIRQ  lib_timer.o
+    0x000005ec   0x000005ec   0x00000030   Code   RO           75    .text.__NVIC_EnableIRQ  lib_button.o
+    0x0000061c   0x0000061c   0x0000006c   Code   RO           26    .text.enable_timer  lib_timer.o
+    0x00000688   0x00000688   0x000000d2   Code   RO           34    .text.init_timer_SRI  lib_timer.o
+    0x0000075a   0x0000075a   0x00000002   PAD
+    0x0000075c   0x0000075c   0x00000028   Code   RO            2    .text.main          main.o
+    0x00000784   0x00000784   0x00000074   Code   RO           28    .text.read_timer    lib_timer.o
+    0x000007f8   0x000007f8   0x0000004e   Code   RO          259    MY_CODE             my_code.o
+    0x00000846   0x00000846   0x00000002   PAD
+    0x00000848   0x00000848   0x00000020   Data   RO           90    .rodata.led_mask    funct_led.o
+    0x00000868   0x00000868   0x00000010   Data   RO          522    Region$$Table       anon$$obj.o
 
 
-    Execution Region ER_RW (Exec base: 0x10000000, Load base: 0x00000854, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_RW (Exec base: 0x10000000, Load base: 0x00000878, Size: 0x00000000, Max: 0xffffffff, ABSOLUTE)
 
     **** No section assigned to this execution region ****
 
 
-    Execution Region ER_ZI (Exec base: 0x10000000, Load base: 0x00000854, Size: 0x00000498, Max: 0xffffffff, ABSOLUTE)
+    Execution Region ER_ZI (Exec base: 0x10000000, Load base: 0x00000878, Size: 0x00000498, Max: 0xffffffff, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x10000000        -       0x00000060   Zero   RW          387    .bss                c_w.l(libspace.o)
-    0x10000060        -       0x00000008   Zero   RW           60    .bss.A              irq_button.o
+    0x10000060        -       0x00000008   Zero   RW           62    .bss.A              irq_button.o
     0x10000068        -       0x00000002   Zero   RW          145    .bss.AD_current     irq_adc.o
-    0x1000006a        -       0x00000008   Zero   RW           61    .bss.B              irq_button.o
-    0x10000072        -       0x00000008   Zero   RW           62    .bss.C              irq_button.o
-    0x1000007a        -       0x00000008   Zero   RW           63    .bss.D              irq_button.o
-    0x10000082   0x00000854   0x00000002   PAD
-    0x10000084        -       0x00000004   Zero   RW           64    .bss.count          irq_button.o
-    0x10000088        -       0x00000004   Zero   RW           65    .bss.count1         irq_button.o
+    0x1000006a        -       0x00000008   Zero   RW           63    .bss.B              irq_button.o
+    0x10000072        -       0x00000008   Zero   RW           64    .bss.C              irq_button.o
+    0x1000007a        -       0x00000008   Zero   RW           65    .bss.D              irq_button.o
+    0x10000082   0x00000878   0x00000002   PAD
+    0x10000084        -       0x00000004   Zero   RW           60    .bss.count          irq_button.o
+    0x10000088        -       0x00000004   Zero   RW           61    .bss.count1         irq_button.o
     0x1000008c        -       0x00000001   Zero   RW          102    .bss.led_value      lib_led.o
-    0x1000008d   0x00000854   0x00000003   PAD
+    0x1000008d   0x00000878   0x00000003   PAD
     0x10000090        -       0x00000004   Zero   RW           40    .bss.tick           lib_timer.o
-    0x10000094   0x00000854   0x00000004   PAD
+    0x10000094   0x00000878   0x00000004   PAD
     0x10000098        -       0x00000000   Zero   RW          277    HEAP                startup_lpc17xx.o
     0x10000098        -       0x00000400   Zero   RW          276    STACK               startup_lpc17xx.o
 
@@ -991,20 +995,20 @@ Image component sizes
 
        170          0         32          0          0       2270   funct_led.o
         26          0          0          0          2       1013   irq_adc.o
-       348          0          0          0         40       2570   irq_button.o
+       382          0          0          0         40       2612   irq_button.o
        116          0          0          0          0       2042   irq_rit.o
         68          0          0          0          0       1324   irq_timer.o
        146          0          0          0          0       4897   lib_button.o
         60          0          0          0          1       2576   lib_led.o
        482          0          0          0          4       3865   lib_timer.o
         40          0          0          0          0        375   main.o
-        80          0          0          0          0        360   my_code.o
+        78          0          0          0          0        360   my_code.o
         76         24        204          0       1024       1028   startup_lpc17xx.o
 
     ----------------------------------------------------------------------
-      1628         24        252          0       1080      22320   Object Totals
+      1664         24        252          0       1080      22362   Object Totals
          0          0         16          0          0          0   (incl. Generated)
-        16          0          0          0          9          0   (incl. Padding)
+        20          0          0          0          9          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1050,15 +1054,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      1880         40        252          0       1176      22516   Grand Totals
-      1880         40        252          0       1176      22516   ELF Image Totals
-      1880         40        252          0          0          0   ROM Totals
+      1916         40        252          0       1176      22558   Grand Totals
+      1916         40        252          0       1176      22558   ELF Image Totals
+      1916         40        252          0          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2132 (   2.08kB)
+    Total RO  Size (Code + RO Data)                 2168 (   2.12kB)
     Total RW  Size (RW Data + ZI Data)              1176 (   1.15kB)
-    Total ROM Size (Code + RO Data + RW Data)       2132 (   2.08kB)
+    Total ROM Size (Code + RO Data + RW Data)       2168 (   2.12kB)
 
 ==============================================================================
 
