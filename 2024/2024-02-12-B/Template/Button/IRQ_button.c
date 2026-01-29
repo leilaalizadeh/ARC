@@ -14,9 +14,12 @@ extern uint32_t tick;
 
 #define NUM_ROWS 10
 #define NUM_COLUMNS 8
+
 char Maze[NUM_ROWS*NUM_COLUMNS];
 int visited[200];
+
 extern exploreMaze(int row,int col,char *MAZE, int visited[]);
+
 void EINT0_IRQHandler (void)	  
 {
 //	if(tick<debounce_time && state0==1){
@@ -58,24 +61,30 @@ void EINT1_IRQHandler (void)
 		int v = (time * 11 + 6) % 73;	
 
 		int all = NUM_ROWS * NUM_COLUMNS;
+	  
+	//BORDERS
+	  for (int i=0;i<NUM_COLUMNS;i++) //top
+				Maze[i] = 'X';
+		for (int i= all-1;i >= ((NUM_ROWS - 1) * NUM_COLUMNS) ;i--) //bottom
+				Maze[i] = 'X';
+		for(int i=((NUM_COLUMNS-1)+NUM_COLUMNS);i<=(NUM_ROWS*NUM_COLUMNS)-1;i+=NUM_COLUMNS) // right 
+		    Maze[i]='X';
+		for (int i=0; i<all; i = i + NUM_COLUMNS) // left
+		    Maze[i] = 'X';
+				
+	  //fill all the cells with X or ''
 		for (int r = 1; r < NUM_ROWS - 1; r++) {
 				for (int c = 1; c < NUM_COLUMNS - 1; c++) {
-					if ((r == 1 && c == 1) ||(r == NUM_ROWS - 2 && c == NUM_COLUMNS - 2))
-						continue;
-					int idx = r * NUM_COLUMNS + c;
-					Maze[idx] = (v < 40) ? ' ' : 'X';
-					v = (v * 11 + 6) % 73;
+						if ((r == 1 && c == 1) ||(r == NUM_ROWS - 2 && c == NUM_COLUMNS - 2))
+							continue;
+						int idx = r * NUM_COLUMNS + c;
+						if(Maze[idx] != 'X'){
+							Maze[idx] = (v < 40) ? ' ' : 'X';
+							v = (v * 11 + 6) % 73;
+						}
 				}
 	   }
-     for (int i=0;i<NUM_COLUMNS;i++) //top
-				Maze[i] = 'X';
-		 for (int i= all-1;i >= ((NUM_ROWS - 1) * NUM_COLUMNS) ;i--) //bottom
-				Maze[i] = 'X';
-		 for(int i=((NUM_COLUMNS-1)+NUM_COLUMNS);i<=(NUM_ROWS*NUM_COLUMNS)-1;i+=NUM_COLUMNS) // right 
-		    Maze[i]='X';
-		 for (int i=0; i<all; i = i + NUM_COLUMNS) // left
-		    Maze[i] = 'X';
-
+		
     Maze[NUM_COLUMNS + 1] = ' ';
 		Maze[(all-NUM_COLUMNS)-2]= ' ';
 		 

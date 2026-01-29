@@ -18,17 +18,20 @@ exploreMaze	PROC
 			
 			LDR SPACE_INDEX,=0
 			MUL ALL,ROW,COL
+			ADD ALL,#1
 			ADD INDEX,COL,#1
 			MOV CNT,INDEX
 FOR			
 			CMP ALL,CNT
-			BEQ FINISH
+			BLO FINISH
 			
 			
 			
             LDRB CURRENT,[MAZE,CNT]	
-			LDR TMP,='V'
-            STRB TMP,[MAZE,CNT]	
+			CMP CURRENT,#' '
+			ITT EQ
+			LDREQ TMP,='V'
+            STRBEQ TMP,[MAZE,CNT]	
 			
 			SUB INDEX,ALL,COL
 			SUB INDEX,INDEX,#2
