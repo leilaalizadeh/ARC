@@ -13,45 +13,50 @@ extern uint32_t tick;
 
 extern char maze[9][8];
 extern i_k,j_k,k;
+int led =0 ;
 void TIMER0_IRQHandler (void)
 {
-  LPC_TIM0->IR |= 1;			/* clear interrupt flag */
-	
-  LED_Out(0);
-	
-	 if (k>=0)
-	 {
-			 //top
-			 if((maze[i_k-1][j_k]-'0') == k){
-					LED_On(4);   //led 7
-				  i_k--;
+   if(led == 0){
+			 LED_Out(0);
+			 led = 1;
+			 if (k>=0)
+			 {
+					 //top
+					if((maze[i_k-1][j_k]-'0') == k){
+							LED_On(11-7);   //led 7
+							i_k--;
+					}
+					 //right
+					else if((maze[i_k][j_k+1] -'0') == k){
+						LED_On(11-4);  //led 4
+						j_k++;
+					}
+					//left
+					else if((maze[i_k][j_k-1] -'0') == k){
+						LED_On(11-6);   //led 6
+						j_k--;
+					}
+					//bottom
+					else if((maze[i_k+1][j_k]-'0') == k){
+						LED_On(11-5);  //led 5
+						i_k++;
+					}
+					
+					k--;
 			 }
-			 //right
-			else if((maze[i_k][j_k+1] -'0') == k){
-				LED_On(7);  //led 4
-				j_k++;
-			}
-			//left
-			else if((maze[i_k][j_k-1] -'0') == k){
-				LED_On(5);   //led 6
-				j_k--;
-			}
-			//bottom
-			else if((maze[i_k+1][j_k]-'0') == k){
-				LED_On(6);  //led 5
-				i_k++;
-			}
-			
-			k--;
-	 }
+			 else{
+				 disable_timer(0);
+				 LED_Out(0);
+			 }
+   }
 	 else{
-		 //stop timer
-		 //LED_Out(9);
+		 LED_Out(0);
+		 led = 0;
 	 }
 	 
 						 
 				
-	
+	LPC_TIM0->IR |= 1;			/* clear interrupt flag */
   return;
 }
 

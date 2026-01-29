@@ -28,14 +28,13 @@
 
 char maze[9][8] = {"XXXXXXXX", {'X', 0, ' ', ' ', ' ', ' ', ' ', 'X'}, "X XXXX X", "X      X", "XX X XXX", "X  X  eX", "X XX XXX", "X      X", "XXXXXXXX"};
 extern int shortestPath(int rows,int columns,char* maze);
-int k;
-int i_k,j_k;
+int k,i_k,j_k;
 int main(){
 	  SystemInit();
 	
     k = shortestPath(9,8,maze);
 	
-	  
+	  // FIND ENTRANCE CELL
 	  for (int i=0;i<=8; i++){
 			for (int j=0;j<=7;j++){
 				 if (maze[i][j] == 'e')
@@ -52,7 +51,7 @@ int main(){
 		//DAC_write(500);
 	
 	//Timer
-		init_timer_SRI(0,0x50,0b011);			//stop reset interrupt
+		init_timer_SRI(0,1250000,0b011);			//stop reset interrupt 0.5 * 10^-3 * 25 * 10^6 = 1250000
 		enable_timer(0);
 		//uint32_t timer_value = read_timer(0);
 	
