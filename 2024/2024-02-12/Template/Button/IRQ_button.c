@@ -115,10 +115,12 @@ void EINT2_IRQHandler (void)
 			}
 			value_new = (value_new * 18) % 101;
 		}
+		//corners
 		Maze[0] = '*';
 	  Maze[NUM_COLUMNS - 1] = '*';
 	  Maze[(NUM_ROWS * NUM_COLUMNS)-NUM_COLUMNS] = '*';
 		Maze[(NUM_ROWS * NUM_COLUMNS)-1] = '*';
+		
 	  int result = mazeSolver(NUM_ROWS,NUM_COLUMNS,Maze);
 		
 		
