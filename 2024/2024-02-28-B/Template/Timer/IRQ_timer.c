@@ -15,61 +15,93 @@ extern int ROW_NUM;
 extern int COL_NUM;
 extern int x;
 extern int y;
+int led = 0;
 
 void TIMER0_IRQHandler (void)
 {
+	int i,j;
+	char val  = ' ';
+	int status = 0;
 	LED_Out(0);
-	int flag = 1;
-		while(flag){
-			  int i,j;
-			  char val  = ' ';
-			  //top
-   			i = x - 1; 
-			  j = y;
-     		val = Maze[i][j];
-			  if (val == ' '){
-					x = i;
-					y = j;
-					Maze[x][y] = 'X';
-					LED_On(11);
-					continue;
-				}
-			//right
-				i = x; 
-			  j = y + 1;
-     		val = Maze[i][j];
-			  if (val == ' '){
-					x = i;
-					y = j;
-					Maze[x][y] = 'X';
-					LED_On(8);
-					continue;
-				}
-			//left
-				i = x; 
-			  j = y-1;
-     		val = Maze[i][j];
-			  if (val == ' '){
-					x = i;
-					y = j;
-					Maze[x][y] = 'X';
-					LED_On(10);
-					continue;
-				}
-			//bottom
-			  i = x + 1; 
-			  j = y;
-     		val = Maze[i][j];
-			  if (val == ' '){
-					x = i;
-					y = j;
-					Maze[x][y] = 'X';
-					LED_On(9);
-					continue;
-				}
-				else
-					break;
+	
+	if(led == 0){
+		led = 1;
+		if(Maze[ x - 1][y] == ' '){ // top
+			x = x-1;
+			Maze[x][y] = 'X';
+			LED_On(11-11);
 		}
+		else if(Maze[x][y + 1] == ' '){ // right
+			y = y + 1;
+			Maze[x][y] = 'X';
+			LED_On(11-8);
+		}
+		else if(Maze[x][y - 1] == ' '){//left
+			y = y-1;
+			Maze[x][y] = 'X';
+			LED_On(11-10);
+		}
+		else if(Maze[x+1][y] == ' '){// bottom
+			x = x+1;
+			Maze[x][y] = 'X';
+			LED_On(11-9);
+		}
+	}
+	else{
+		led =0;
+	}
+		
+//	int flag = 1;
+//		while(flag){
+//			  int i,j;
+//			  char val  = ' ';
+//			  //top
+//   			i = x - 1; 
+//			  j = y;
+//     		val = Maze[i][j];
+//			  if (val == ' '){
+//					x = i;
+//					y = j;
+//					Maze[x][y] = 'X';
+//					LED_On(11);
+//					continue;
+//				}
+//			//right
+//				i = x; 
+//			  j = y + 1;
+//     		val = Maze[i][j];
+//			  if (val == ' '){
+//					x = i;
+//					y = j;
+//					Maze[x][y] = 'X';
+//					LED_On(8);
+//					continue;
+//				}
+//			//left
+//				i = x; 
+//			  j = y-1;
+//     		val = Maze[i][j];
+//			  if (val == ' '){
+//					x = i;
+//					y = j;
+//					Maze[x][y] = 'X';
+//					LED_On(10);
+//					continue;
+//				}
+//			//bottom
+//			  i = x + 1; 
+//			  j = y;
+//     		val = Maze[i][j];
+//			  if (val == ' '){
+//					x = i;
+//					y = j;
+//					Maze[x][y] = 'X';
+//					LED_On(9);
+//					continue;
+//				}
+//				else
+//					break;
+//		}
 		
 	
 	

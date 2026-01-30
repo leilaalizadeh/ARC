@@ -58,7 +58,7 @@ int main(){
 		//DAC_write(500);
 	
 	//Timer
-		init_timer_SRI(0,0x05,0b001);			//stop reset interrupt
+		init_timer_SRI(0,1250000,0b011);			//stop reset interrupt 0.5 * 25000000 = 12500000
 		enable_timer(0);
 		//uint32_t timer_value = read_timer(0);
 	
