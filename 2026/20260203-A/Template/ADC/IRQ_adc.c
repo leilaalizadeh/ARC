@@ -16,8 +16,8 @@
  *----------------------------------------------------------------------------*/
 
 unsigned short ADC_current;   
-
+int change = 0;
 void ADC_IRQHandler(void) {
-  	
   ADC_current = ((LPC_ADC->ADGDR>>4) & 0xFFF);/* Read Conversion Result  0-4095           */
+	change = 1;	
 }

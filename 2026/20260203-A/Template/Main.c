@@ -2,7 +2,8 @@
 
 
 extern volatile uint16_t ADC_current;
-
+volatile uint16_t prev_adc = 0;
+extern volatile int change;
 int main(){
 	  SystemInit();
 	
@@ -50,15 +51,23 @@ int main(){
 		//getDisplayPoint(&display, Read_Ads7846(), &matrix );
 
 	while(1){
-		LED_Out(0);
-		int msb = ADC_current >> 4;   
-		for(int i=0;i<8;i++){
-	 	  LED_Out(0);
-			int led = 11-(4+i);
-			int bit = msb >> (7-i); 
-			int val = bit & 1 ;
-			if(val == 1)
-				LED_On(led); 
+		__WFI();
+		
+		if(change){
+			change = 0;
+			if (prev_adc != ADC_current){
+				LED_Out(0);
+				prev_adc = ADC_current;
+				int msb = ADC_current >> 4;   
+//				LED_Out(msb);
+				for(int i=0;i<8;i++){
+					int led = 11-(4+i);
+					int bit = msb >> (7-i); 
+					int val = bit & 1 ;
+					if(val == 1)
+						LED_On(led); 
+			 }
+		 }
    }
 	}
 }

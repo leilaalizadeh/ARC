@@ -11,17 +11,18 @@ extern volatile uint16_t ADC_current;
 
 void EINT0_IRQHandler (void)	  
 {
-	LED_Out(0);
+	
 	
 	if(tick<debounce_time && state0==1){
 		state0=0;
 		last_tick0 = tick;
     
+		LED_Out(0);
 		int msb = ADC_current >> 4;
 		uint32_t result = Look_and_Say(msb);
 		uint8_t lsb = (uint8_t)(result & 0xFF);
+		//LED_Out(lsb);
 		for(int i=0;i<8;i++){
-				LED_Out(0);
 				int led = 11-(4+i);
 				int bit = lsb >> (7-i); 
 				int val = bit & 1 ;
@@ -40,11 +41,12 @@ void EINT0_IRQHandler (void)
 	last_tick0 = tick;
 	state0=1;
 	
+	LED_Out(0);
 	int msb = ADC_current >> 4;
 	uint32_t result = Look_and_Say(msb);
 	uint8_t lsb = (uint8_t)(result & 0xFF);
+	//LED_Out(lsb);
 	for(int i=0;i<8;i++){
-	 	  LED_Out(0);
 			int led = 11-(4+i);
 			int bit = lsb >> (7-i); 
 			int val = bit & 1 ;
