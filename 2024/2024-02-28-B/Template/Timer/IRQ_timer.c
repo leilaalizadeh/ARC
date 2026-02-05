@@ -19,11 +19,7 @@ int led = 0;
 
 void TIMER0_IRQHandler (void)
 {
-	int i,j;
-	char val  = ' ';
-	int status = 0;
-	LED_Out(0);
-	
+	LED_Out(0);	
 	if(led == 0){
 		led = 1;
 		if(Maze[ x - 1][y] == ' '){ // top

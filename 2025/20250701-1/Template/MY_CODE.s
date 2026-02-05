@@ -12,6 +12,7 @@ TMP2		RN 7
 nextElementLCG PROC
 	           EXPORT nextElementLCG
 			   PUSH{R4-R8,R10-R11,LR} ; 8
+			   
 			   LDR M,[SP,#32]         ; 4 * 8 = 32
 			   MUL TMP,SEED,A     ; SEED * A
 			   ADD TMP,C          ; (SEED * A) + C

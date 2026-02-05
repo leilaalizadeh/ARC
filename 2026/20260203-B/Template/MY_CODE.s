@@ -1,0 +1,90 @@
+NUMBER		RN 0
+CNT			RN 1
+TMP			RN 2
+TMP1		RN 3
+COUNT		RN 4
+PREV		RN 5
+RESULT		RN 6
+MASK		RN 7
+CNT1		RN 8
+TMP2		RN 10
+MASK1		RN 11
+
+			AREA MY_CODE,CODE, READONLY
+				
+Look_and_Say 	PROC
+			EXPORT Look_and_Say
+			PUSH{R4-R8,R10-R11,LR}
+			
+	        LDR CNT,=0
+			LDR CNT1,=1               ; CHANGE TO 1
+			LDR COUNT,=0
+			LDR PREV,=0
+			LDR RESULT,=0
+FOR
+			LDR TMP,=10
+			UDIV TMP1,NUMBER,TMP  
+			
+			ORR MASK,TMP1,NUMBER      ; ADD THIS LINE
+			ORR MASK,MASK,TMP2        ; ADD THIS LINE
+			
+			CMP MASK,#0               ; CHNAGE TMP1 TO MASK
+			BEQ FINISH      
+			
+			MUL TMP,TMP1
+			SUB	TMP2,NUMBER,TMP  
+			MOV NUMBER,TMP1
+			
+			CMP CNT,#0
+			ITTE  EQ
+			MOVEQ PREV,TMP2
+			ADDEQ COUNT,#1
+			BNE	NOT_ZERO
+			
+
+			B NEXT
+			
+NOT_ZERO
+			CMP PREV,TMP2
+			BEQ	CHECK_PREV
+			
+			LDR MASK,=10       ; CHANGE MASK1 TO MASK
+			
+;			CMP CNT1,#0        ; REMOVE THESE 4 LINES; MOVE THE PLACE 
+;			IT	EQ
+;			LDREQ MASK,=10
+;			MULNE MASK,MASK1
+			
+			MUL PREV,MASK
+			ADD COUNT,PREV,COUNT     
+			
+		    MUL COUNT,CNT1     ; ADD THIS LINE
+			
+			ADD RESULT,COUNT   
+			
+			;ADD CNT1,#2       ; REMOVE THIS LINE
+			LDR MASK1,=100     ; ADD THIS LINE
+			MUL CNT1,MASK1     ; ADD THIS LINE
+			 
+			LDR COUNT,=0
+			MOV PREV,TMP2  
+			
+			
+CHECK_PREV
+			ADD COUNT,#1
+			B NEXT
+			
+NEXT		
+			ADD CNT,#1
+			B FOR
+			
+FINISH
+			MOV R0,RESULT
+
+			   
+	        POP{R4-R8,R10-R11,PC}
+			ENDP
+			END
+				
+					
+	
