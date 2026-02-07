@@ -51,7 +51,6 @@ NEXT
 						B WHILE
 						
 FINISH
-						MOV R0, M_B
 						POP{R4-R8,R10-R11,PC}
 						ENDP
 						END

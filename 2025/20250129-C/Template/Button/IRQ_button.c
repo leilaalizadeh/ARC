@@ -15,12 +15,21 @@ int state2 = 1;
 int count = 0;
 int count1 = 0;
 
-unsigned char A[8] = {};
-unsigned char B[8] = {};
-unsigned char C[8] = {};
-unsigned char D[8] = {};
-extern unsigned char* transposition(unsigned char* array_a,unsigned char* array_b);
+uint8_t A[8] = {};
+uint8_t B[8] = {};
+uint8_t C[8] = {};
+uint8_t Ct[8] = {};
+uint8_t At[8] = {};
+uint8_t Bt[8] = {};
+extern void transposition(uint8_t* array_a,uint8_t* array_b);
 	
+static int equal(const uint8_t x[8], const uint8_t y[8]) {
+  for (int i = 0; i < 8; i++) {
+    if (x[i] != y[i]) return 0;
+  }
+  return 1;
+}	
+
 void EINT0_IRQHandler (void)	  
 {
 //	if(tick<debounce_time && state0==1){
@@ -65,15 +74,15 @@ void EINT0_IRQHandler (void)
 			C[i] = A[i] + B[i];
 		}
 		
-		unsigned char* result = transposition(C,D);
-		unsigned char* result1 = transposition(A,D);
-		unsigned char* result2 = transposition(B,D);
+		transposition(C,Ct);
+		transposition(A,At);
+		transposition(B,Bt);
 		
 		for (int i; i<8; i++){
-			D[i] = result1[i] + result2[i];
+			C[i] = At[i] + Bt[i];
 		}
 		
-		if(D == C ){
+		if(equal(Ct , C)){
 			LED_Out(0);
 			LED_On(4);
 		}
@@ -113,7 +122,7 @@ void EINT1_IRQHandler (void)
 //  write code from here with or without debouncing
 	if(count < 8){
 		uint32_t time = read_timer(2);
-		A[count] = time;
+		A[count] = (uint8_t)time;
 		count ++;
 	}
 	
@@ -143,7 +152,7 @@ void EINT2_IRQHandler (void)
 ////  write code from here with or without debouncing
 	if(count1 < 8){
 		uint32_t time = read_timer(2);
-		B[count1] = time;
+		B[count1] = (uint8_t)time;
 		count1 ++;
 	}
 		
