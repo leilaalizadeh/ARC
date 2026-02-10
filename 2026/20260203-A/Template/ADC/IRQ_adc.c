@@ -15,9 +15,12 @@
   A/D IRQ: Executed when A/D Conversion is ready (signal from ADC peripheral)
  *----------------------------------------------------------------------------*/
 
-unsigned short ADC_current;   
-int change = 0;
+unsigned short ADC_current;  
+extern int enable;                // EDITED: ADD
+int change = 0;                   // EDITED: ADD
 void ADC_IRQHandler(void) {
-  ADC_current = ((LPC_ADC->ADGDR>>4) & 0xFFF);/* Read Conversion Result  0-4095           */
-	change = 1;	
+	if(enable == 0){                // EDITED: ADD
+		ADC_current = ((LPC_ADC->ADGDR>>4) & 0xFFF);/* Read Conversion Result  0-4095           */
+		change = 1;	                   // EDITED: ADD
+	}
 }

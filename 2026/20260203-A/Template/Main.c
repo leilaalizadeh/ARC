@@ -17,8 +17,8 @@ int main(){
 		//uint32_t timer_value = read_timer(0);
 	
 	//Delay 
-		init_timer_SRI(3,25000,0b011);			//1ms delay
-		enable_timer(3);
+		init_timer_SRI(3,25000,0b011);			//EDITED: ADD - DEBOUNCING
+		enable_timer(3);                    //EDITED: ADD - DEBOUNCING
 		//delay_ms(50);
 	
 	//Button
@@ -50,24 +50,22 @@ int main(){
 		//TP_DrawPoint(display.x,display.y);
 		//getDisplayPoint(&display, Read_Ads7846(), &matrix );
 
-	while(1){
-		__WFI();
-		
-		if(change){
-			change = 0;
-			if (prev_adc != ADC_current){
-				LED_Out(0);
-				prev_adc = ADC_current;
-				int msb = ADC_current >> 4;   
-//				LED_Out(msb);
-				for(int i=0;i<8;i++){
-					int led = 11-(4+i);
-					int bit = msb >> (7-i); 
-					int val = bit & 1 ;
-					if(val == 1)
-						LED_On(led); 
-			 }
-		 }
-   }
+		while(1){
+			__WFI();                                     // EDITED:  ADD – WAKE UP ONLY WHEN AM INTERRUPT  HAPPENS
+			if(change){                                  // EDITED:  ADD – SET TO 1 IN IRQ
+				change = 0;                                // EDITED:  ADD 
+				if (prev_adc != ADC_current){              // EDITED:  ADD 
+					LED_Out(0);                              // EDITED:  ADD 
+					prev_adc = ADC_current;                  // EDITED:  ADD 
+					int msb = ADC_current >> 4;              // EDITED:  CHANGE 8 TO 4 
+					for(int i=0;i<8;i++){                    // EDITED:  ADD
+						int led = 11-(4+i);                    // EDITED:  ADD
+						int bit = msb >> (7-i);                // EDITED:  ADD
+						int val = bit & 1 ;                    // EDITED:  ADD
+						if(val == 1)                           // EDITED:  ADD
+									 LED_On(led);                    // EDITED:  ADD
+					}
+				}
+			}
 	}
 }
