@@ -1,0 +1,35 @@
+NUMBER		 RN 0
+Q			 RN 1
+REM			 RN 2
+TMP			 RN 3
+CNT			 RN 4
+TEN			 RN 5
+RESULT		 RN 6
+VALUE		 RN 7
+
+			 AREA MY_CODE,CODE,READONLY
+algoritm196	 PROC
+			 EXPORT algoritm196
+			 PUSH{R4-R8,R10,R11,LR}
+			 LDR TEN,=10
+			 LDR RESULT,=0
+			 MOV VALUE,NUMBER
+LOOP
+			 UDIV Q,NUMBER,TEN       ; NUMBER/10
+			 MUL  TMP,Q,TEN         
+			 SUB  REM,NUMBER,TMP     ; REMAINDER 
+			 MOV  NUMBER,Q
+			 MUL  TMP,RESULT,TEN     ; RESULT * 10
+			 ADD  RESULT,TMP,REM     ; RESULT * 10 + REM 
+			 CMP  NUMBER,#0
+			 BEQ  NEXT 
+			 B LOOP
+NEXT			 
+			 CMP RESULT,VALUE 
+             ITE EQ
+			 MOVEQ R0,#0
+			 ADDNE R0,VALUE,RESULT
+			 
+			 POP{R4-R8,R10,R11,PC}
+			 ENDP
+			 END 

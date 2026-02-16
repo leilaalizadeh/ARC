@@ -146,7 +146,9 @@ Reset_Handler   PROC
 ;				LDR R0,=outputData
 ;				LDR R1,=7
 ;				BL insertionSort
-;STOP			B STOP			
+
+;STOP			
+;				B STOP			
 
 
 

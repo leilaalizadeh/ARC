@@ -127,13 +127,13 @@ CRP_Key         DCD     0xFFFFFFFF
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-                IMPORT  __main
-                LDR     R0, =__main
-                BX      R0
+;                IMPORT  __main
+;                LDR     R0, =__main
+;                BX      R0
 
-;				IMPORT KaprekarRoutine
-;				LDR R0,=8352
-;				BL KaprekarRoutine 
+				IMPORT KaprekarRoutine
+				LDR R0,=8352
+				BL KaprekarRoutine 
 
 STOP			B STOP
 

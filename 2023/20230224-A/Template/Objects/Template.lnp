@@ -16,6 +16,7 @@
 ".\objects\hzlib.o"
 ".\objects\touchpanel.o"
 ".\objects\my_code.o"
+".\objects\my_code1.o"
 ".\objects\dac.o"
 ".\objects\startup_lpc17xx.o"
 ".\objects\system_lpc17xx.o"
