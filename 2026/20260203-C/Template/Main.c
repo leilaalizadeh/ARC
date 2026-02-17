@@ -1,7 +1,6 @@
 #include "Main.h"
 
-extern volatile uint16_t ADC_current;
-volatile uint16_t prev_adc = 0;
+
 
 int main(){
 	  SystemInit();
@@ -11,8 +10,8 @@ int main(){
 		//DAC_write(500);
 	
 	//Timer
-		//init_timer_SRI(0,0xFF,0b000);			//stop reset interrupt
-		//enable_timer(0);
+		init_timer_SRI(0,1250000,0b011);			//stop reset interrupt
+		enable_timer(0);
 		//uint32_t timer_value = read_timer(0);
 	
 	//Delay 
@@ -54,20 +53,6 @@ int main(){
 	
 	while(1){
 		
-		if (prev_adc != ADC_current){
-			LED_Out(0);
-			prev_adc = ADC_current;
-			int msb = ADC_current >> 4;   
-			LED_Out(msb);
-//			for(int i=0;i<8;i++){
-//				LED_Out(0);
-//				int led = 11-(4+i);
-//				int bit = msb >> (7-i); 
-//				int val = bit & 1 ;
-//				if(val == 1)
-//					LED_On(led); 
-//		 }
-   }
 	}
 	
 }

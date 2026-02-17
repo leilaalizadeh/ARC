@@ -118,7 +118,7 @@ SYScurrentValueReg		EQU	0xE000E018
 CRP_Key         DCD     0xFFFFFFFF
                 ENDIF
 
-N 			EQU 300
+N 			    EQU 300
 				AREA   MY_DATA, DATA, READWRITE
 AREA_		    SPACE N 
 
@@ -129,17 +129,17 @@ AREA_		    SPACE N
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-;                IMPORT  __main
-;                LDR     R0, =__main
-;                BX      R0
+                IMPORT  __main
+                LDR     R0, =__main
+                BX      R0
 
 
-				IMPORT Recaman
-			    LDR R0,=AREA_
-				LDR R1,=N
-				BL Recaman
+;				IMPORT Recaman
+;			    LDR R0,=AREA_
+;				LDR R1,=N
+;				BL Recaman
 
-stop			B	stop
+;stop			B	stop
                 ENDP
 
 
