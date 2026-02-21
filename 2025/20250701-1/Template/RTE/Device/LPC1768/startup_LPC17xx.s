@@ -130,31 +130,31 @@ SEQUENCE		SPACE DIM
 
 Reset_Handler   PROC
                 EXPORT  Reset_Handler             [WEAK]
-;                IMPORT  __main
-;                LDR     R0, =__main
-;                BX      R0
+                IMPORT  __main
+                LDR     R0, =__main
+                BX      R0
 
-				IMPORT nextElementLCG
-				LDR R0,=1 ;prev value
-				LDR R5,=0 ;COUNTER LOOP
-				
-FOR						
-				LDR R1,=131
-				LDR R2,=7
-				LDR R4,=255
-				PUSH {R4} ; THE FIFTH PARAM ON THE STACK 
-				MOV R3,R5
-				BL nextElementLCG
-				
-				LDR R1,=SEQUENCE ;ARRAY
-				STRB R0,[R1,R5]  ;SEQUENCE[COUNTER] = R0
-				ADD R5,#1        ;COUNTER + 1
-				
-				CMP R6,#DIM     
-				BLO FOR
-				
-STOP			
-				B STOP
+;				IMPORT nextElementLCG
+;				LDR R0,=1 ;prev value
+;				LDR R5,=0 ;COUNTER LOOP
+;				
+;FOR						
+;				LDR R1,=131
+;				LDR R2,=7
+;				LDR R4,=255
+;				PUSH {R4} ; THE FIFTH PARAM ON THE STACK 
+;				MOV R3,R5
+;				BL nextElementLCG
+;				
+;				LDR R1,=SEQUENCE ;ARRAY
+;				STRB R0,[R1,R5]  ;SEQUENCE[COUNTER] = R0
+;				ADD R5,#1        ;COUNTER + 1
+;				
+;				CMP R6,#DIM     
+;				BLO FOR
+;				
+;STOP			
+;				B STOP
 				
 
 

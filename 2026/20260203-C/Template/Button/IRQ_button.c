@@ -56,6 +56,9 @@ void EINT1_IRQHandler (void)
 	uint8_t lsb = (uint8_t)(first_value & 0xFF);    
 	LED_Out(lsb);
 	
+	delay_ms(2000);
+	LED_Out(0);
+	
   init_timer_SRI(1,500000,0b011);			
 	enable_timer(1);                      
 	LPC_SC->EXTINT = (1 << 1);     /* clear pending interrupt         */

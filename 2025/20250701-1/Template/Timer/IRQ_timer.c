@@ -26,21 +26,21 @@ int flag = 0;
 void TIMER0_IRQHandler (void)
 {
 	if(counter <n){
-		 flag = 1;
-     seed = nextElementLCG(seed, 131, 7, counter, 255);
-		 int mod = seed % 4;
-     LED_Out(0);
-
-     if(mod == 0) // UP
-				LED_On(11-11);
-     else if(mod == 1)// LEFT
-				LED_On(11-10); 
-		 else if(mod == 2) // RIGHT
-				LED_On(11-9);  
-		 else  // DOWN             
-				LED_On(11-8);
-		 
-		counter++; 
+		if(flag == 0){
+			 flag = 1;
+			 seed = nextElementLCG(seed, 131, 7, counter, 255);
+			 int mod = seed % 4;
+			 LED_Out(0);
+			 if(mod == 0)      // UP
+					LED_On(11-11);
+			 else if(mod == 1) // LEFT
+					LED_On(11-10); 
+			 else if(mod == 2) // RIGHT
+					LED_On(11-9);  
+			 else              // DOWN             
+					LED_On(11-8);
+			counter++; 
+	 }
   }else{
     LED_Out(0);
     if(num_correct > num_wrong)

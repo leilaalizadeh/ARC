@@ -38,7 +38,6 @@ void RIT_IRQHandler (void)
 				num_correct++;
 			else 
 				num_wrong++;
-			LED_Out(0);
 		}
 	}else if((LPC_GPIO1->FIOPIN & (1<<27)) == 0){			//left 10
 		if(flag==1){
@@ -47,7 +46,6 @@ void RIT_IRQHandler (void)
 				num_correct++;
 			else 
 				num_wrong++;
-			LED_Out(0);
 		}
 	}else if((LPC_GPIO1->FIOPIN & (1<<28)) == 0){			//right 9
 		if(flag==1){
@@ -56,7 +54,6 @@ void RIT_IRQHandler (void)
 				num_correct++;
 			else 
 				num_wrong++;
-			LED_Out(0);
 		}
 	}else if((LPC_GPIO1->FIOPIN & (1<<29)) == 0){			//up 11
 		if(flag==1){
@@ -65,7 +62,6 @@ void RIT_IRQHandler (void)
 				num_correct++;
 			else 
 				num_wrong++;
-			LED_Out(0);
 		}
 	}
 	reset_RIT();
