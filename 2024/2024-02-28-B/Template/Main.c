@@ -37,7 +37,7 @@ int main(){
 	  SystemInit();
 	
 	
-	  int result =  deadEndFilling(ROW_NUM,COL_NUM,Maze);
+	  deadEndFilling(ROW_NUM,COL_NUM,Maze);
 	  
 	  
 	  int found = 0;
