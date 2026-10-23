@@ -1,6 +1,6 @@
 # ARC
 
-My solutions for the Computer Architectures (ARC) lab exams at PoliTO, from 2022 to 2026.
+My solutions for the Computer Architectures (ARC) exams at PoliTO, from 2022 to 2026.
 
 The code is in C and ARM assembly for the LandTiger board (LPC1768) and runs in Keil µVision.
 
